@@ -1,0 +1,6 @@
+interface:
+  display_name: "即时新闻雷达"
+  short_description: "无需Docker，采集公开热榜与RSS，经核验生成选题并归档到指定Obsidian库"
+  default_prompt: "使用 $news-live 现场采集新闻，按我的关注主题核验和筛选，生成创作建议并保存到我指定的Obsidian新闻目录。"
+policy:
+  allow_implicit_invocation: true

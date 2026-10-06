@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.news-live.json
+config.local.json
+news-live-data/
+*.sqlite3
+*.db
+.env*
+.DS_Store
