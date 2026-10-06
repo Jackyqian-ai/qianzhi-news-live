@@ -1,4 +1,6 @@
-# News Live｜不依赖Docker的Obsidian新闻Skill
+# Qianzhi News Live｜不依赖Docker的Obsidian新闻Skill
+
+由钱智（Jackyqian-ai）发布的共享Skill。
 
 让支持本地Skills、Python执行和联网阅读的AI助手，按需采集公开热榜与RSS，核验新闻原文，为你的工作、阅读和创作筛选最多3条重点，并保存到你指定的Obsidian新闻目录。
 
@@ -32,25 +34,25 @@
 在尚未安装同名skill时：
 
 ```bash
-git clone https://github.com/Jackyqian-ai/news-live.git "$HOME/.codex/skills/news-live"
+git clone https://github.com/Jackyqian-ai/qianzhi-news-live.git "$HOME/.codex/skills/qianzhi-news-live"
 ```
 
-已有同名skill时先备份本地修改和配置，再按自己的升级方式更新；不要直接覆盖。重新打开宿主会话以加载Skill，然后在对话中调用`$news-live`。
+已有同名skill时先备份本地修改和配置，再按自己的升级方式更新；不要直接覆盖。重新打开宿主会话以加载Skill，然后在对话中调用`$qianzhi-news-live`。
 
-也可下载项目ZIP，将其中含SKILL.md、scripts、references和agents的目录放入宿主Skill目录，目录名保持`news-live`。其他宿主需自行确认其Skill发现路径与工具权限；本项目未声称在所有AI客户端完成兼容测试。
+也可下载项目ZIP，将其中含SKILL.md、scripts、references和agents的目录放入宿主Skill目录，目录名保持`qianzhi-news-live`。其他宿主需自行确认其Skill发现路径与工具权限；本项目未声称在所有AI客户端完成兼容测试。
 
 ## 选择Obsidian库与归档目录
 
 最简单的方式是在对话中明确指定，例如：
 
-> 使用$news-live。我的Obsidian库是/path/to/MyVault，新闻存到1.输入/新闻资讯。关注HR实际AI工作链、组织管理和有原始证据的心理学。给出最多3条阅读重点与创作建议，同日已有文件只追加。
+> 使用$qianzhi-news-live。我的Obsidian库是/path/to/MyVault，新闻存到1.输入/新闻资讯。关注HR实际AI工作链、组织管理和有原始证据的心理学。给出最多3条阅读重点与创作建议，同日已有文件只追加。
 
 你可以改成自己的库内目录，例如`资讯/每日新闻`。首次未给出库且当前项目无法确认时，AI会询问；不会使用作者的个人路径。
 
 需要以后继续使用相同位置时，保存本地配置：
 
 ```bash
-python3 "$HOME/.codex/skills/news-live/scripts/configure.py" \
+python3 "$HOME/.codex/skills/qianzhi-news-live/scripts/configure.py" \
   --vault "/path/to/MyVault" \
   --news-dir "1.输入/新闻资讯" \
   --data-dir "9.系统/news-live-data"
@@ -72,7 +74,7 @@ news_dir和data_dir支持库内相对路径或绝对路径，必须各自在选�
 若希望跨项目调用也采用默认位置，可在配置命令里加：
 
 ```bash
---config "$HOME/.codex/skills/news-live/config.local.json"
+--config "$HOME/.codex/skills/qianzhi-news-live/config.local.json"
 ```
 
 位置优先级：本次指令>Skill本地config.local.json>当前项目.news-live.json>已明确的Obsidian项目。config.local.json、.news-live.json都被.gitignore排除。
@@ -83,7 +85,7 @@ news_dir和data_dir支持库内相对路径或绝对路径，必须各自在选�
 
 在AI宿主中调用：
 
-> $news-live，读取/path/to/MyVault/.news-live.json，获取最新新闻，并把核验后的创作建议归档。
+> $qianzhi-news-live，读取/path/to/MyVault/.news-live.json，获取最新新闻，并把核验后的创作建议归档。
 
 最终笔记：
 
@@ -99,7 +101,7 @@ news_dir和data_dir支持库内相对路径或绝对路径，必须各自在选�
 ### 只采集原始数据
 
 ```bash
-python3 "$HOME/.codex/skills/news-live/scripts/collect.py" \
+python3 "$HOME/.codex/skills/qianzhi-news-live/scripts/collect.py" \
   --config "/path/to/MyVault/.news-live.json"
 ```
 
@@ -164,3 +166,7 @@ tests/                    离线行为测试
 默认源名单与公开接口参考：[NewsNow](https://github.com/ourongxing/newsnow)、[TrendRadar请求实现](https://github.com/sansan0/TrendRadar/blob/master/trendradar/crawler/fetcher.py)。采集器自行实现，未打包它们的程序或配置。
 
 MIT许可证。欢迎报告失败源、解析变化或正文核验问题；不要在Issue中附私人配置、笔记、候选人资料或凭据。
+
+## 从旧名称迁移
+
+原本机名称为`news-live`，现统一调用`$qianzhi-news-live`。已有`.news-live.json`、`config.local.json`、`news-live-data`与`news-live.sqlite3`继续兼容，不需要移动历史数据。更换安装目录时先备份本地修改，再将私人配置单独迁移；不要将私人配置推送到GitHub。

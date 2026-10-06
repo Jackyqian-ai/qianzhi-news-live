@@ -252,7 +252,7 @@ def main():
             statuses.append(status)
             items.extend(rows)
     run={'id':runid,'started_at':started.isoformat(),'completed_at':now().isoformat(),
-       'source':'news-live direct public collection','rss_lookback_hours':a.hours,
+       'source':'qianzhi-news-live direct public collection','rss_lookback_hours':a.hours,
        'coverage':'invocation snapshot; not continuous monitoring or whole-day heat',
        'source_status':statuses,'items':items}
     (rundir/'snapshot.json').write_text(json.dumps(run,ensure_ascii=False,indent=2))
